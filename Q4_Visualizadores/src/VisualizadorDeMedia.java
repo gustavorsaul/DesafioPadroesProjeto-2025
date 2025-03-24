@@ -1,10 +1,16 @@
 import java.util.List;
 
-public class VisualizadorDeMedia {
+public class VisualizadorDeMedia implements Observer {
     private List<Integer> valores;
 
     public VisualizadorDeMedia(List<Integer> valores){
         this.valores = valores;
+    }
+
+    @Override
+    public void atualizar(int valor) {
+        this.valores.add(valor);
+        exibeMedia();
     }
 
     public void defineValores(List<Integer> valores){
