@@ -8,9 +8,8 @@ public class VisualizadorDeSomatorio implements Observer {
     }
 
     @Override
-    public void atualizar(int valor) {
-        this.valores.add(valor);
-        exibeSomatorio();
+    public void atualizar(List<Integer> valores) {
+        exibeSomatorio(valores);
     }
 
     public void defineValores(List<Integer> valores){
@@ -21,7 +20,7 @@ public class VisualizadorDeSomatorio implements Observer {
         this.valores.add(valor);
     }
 
-    public void exibeSomatorio(){
+    public void exibeSomatorio(List<Integer> valores){
         Integer soma = valores.stream()
             .mapToInt(Integer::intValue)
             .sum();

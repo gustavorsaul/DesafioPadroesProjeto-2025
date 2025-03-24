@@ -10,9 +10,8 @@ public class VisualizadorDeMaiorValor implements Observer{
     }
 
     @Override
-    public void atualizar(int valor) {
-        this.valores.add(valor);
-        exibeMaiorValor();
+    public void atualizar(List<Integer> valores) {
+        exibeMaiorValor(valores);
     }
 
     public void defineValores(List<Integer> valores){
@@ -23,7 +22,7 @@ public class VisualizadorDeMaiorValor implements Observer{
         this.valores.add(valor);
     }
 
-    public void exibeMaiorValor(){
+    public void exibeMaiorValor(List<Integer> valores){
         OptionalInt maiorValor = valores.stream()
             .mapToInt(Integer::intValue)
             .max();

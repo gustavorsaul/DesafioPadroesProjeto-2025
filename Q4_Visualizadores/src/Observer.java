@@ -1,5 +1,7 @@
-public interface Observer {
+import java.util.List;
 
-    void atualizar(int valor);
+public interface Observer {
+    
+    public void atualizar(List<Integer> valores);
 
 }

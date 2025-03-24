@@ -13,7 +13,7 @@ public class FonteDeDados{
     public void add(Integer value){
         if (value < 0) throw new IllegalArgumentException("Valor invalido");
         lst.add(value);
-        notificaObserver(value);
+        notificaObserver();
     }
 
     public int quantidade(){
@@ -26,15 +26,16 @@ public class FonteDeDados{
 
     public void addObserver(Observer observer){
         observers.add(observer);
+        observer.atualizar(lst);
     }
 
     public void removeObserver(Observer observer){
         observers.remove(observer);
     }
 
-    private void notificaObserver(int valor) {
+    private void notificaObserver() {
         for (Observer observer : observers) {
-            observer.atualizar(valor);
+            observer.atualizar(lst);
         }
     }
 }

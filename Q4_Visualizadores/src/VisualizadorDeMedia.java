@@ -8,9 +8,8 @@ public class VisualizadorDeMedia implements Observer {
     }
 
     @Override
-    public void atualizar(int valor) {
-        this.valores.add(valor);
-        exibeMedia();
+    public void atualizar(List<Integer> valores) {
+        exibeMedia(valores);
     }
 
     public void defineValores(List<Integer> valores){
@@ -21,7 +20,7 @@ public class VisualizadorDeMedia implements Observer {
         this.valores.add(valor);
     }
 
-    public void exibeMedia(){
+    public void exibeMedia(List<Integer> valores){
         double media = valores.stream()
             .mapToInt(Integer::intValue)
             .average()
