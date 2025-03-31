@@ -2,15 +2,16 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import composite.*;
 
 public class VendasEmMemoria implements VendasFachada{
-	private List<Produto> produtos;
+	private List<ProdutoComponent> produtos;
 	
 	public VendasEmMemoria() {
 		produtos = new ArrayList<>();
-		produtos.add(new Produto(1, "Caneta", 1.55));
-		produtos.add(new Produto(2, "Borracha", 1.15));
-		produtos.add(new Produto(3, "Caderno", 32.99));
+		produtos.add(new ProdutoUnidade(1, "Caneta", 1.55));
+		produtos.add(new ProdutoUnidade(2, "Borracha", 1.15));
+		produtos.add(new ProdutoUnidade(3, "Caderno", 32.99));
 	}
 	
 	@Override
@@ -20,7 +21,10 @@ public class VendasEmMemoria implements VendasFachada{
 
 	@Override
 	public void registrarVenda(Venda umaVenda, int codigoProduto, int quantidade) {
-		Produto prod = produtos.stream().filter(p -> p.getId() == codigoProduto).findFirst().get();
+		ProdutoComponent prod = produtos.stream()
+			.filter(p -> p.getId() == codigoProduto)
+			.findFirst()
+			.get();
 		umaVenda.registrarVenda(prod, quantidade);
 	}
 
@@ -30,8 +34,13 @@ public class VendasEmMemoria implements VendasFachada{
 	}
 
 	@Override
-	public List<Produto> buscarProdutos() {
+	public List<ProdutoComponent> buscarProdutos() {
 		return Collections.unmodifiableList(produtos);
+	}
+
+	@Override
+	public void adicionarProduto(ProdutoComponent produto) {
+		produtos.add(produto);
 	}
 
 }

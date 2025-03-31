@@ -3,6 +3,8 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
+import composite.ProdutoComponent;
+
 public class Venda {
     private LocalDateTime data;
     private List<ItemDeVenda> itens;
@@ -28,7 +30,7 @@ public class Venda {
         return total;
     }
 
-    public void registrarVenda(Produto produto, int quantidade) {
+    public void registrarVenda(ProdutoComponent produto, int quantidade) {
         ItemDeVenda item = new ItemDeVenda(produto, quantidade);
         itens.add(item);
     }
