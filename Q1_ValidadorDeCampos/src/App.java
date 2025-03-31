@@ -8,5 +8,8 @@ public class App {
         }else{
             System.out.println(email+" não é um email válido!");
         }
+
+        validador = validaFactory.criarValida(validaFactory.Tipo.INTEIRO);
+        System.out.println(validador.valida("2340"));
     }
 }
